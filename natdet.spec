@@ -21,7 +21,7 @@ share internet connection illegaly, without your authorization.
 %description -l pl
 NATDet jest ca³kiem ma³ym ale bardzo u¿ytecznym (zw³aszcza dla
 administratorów sieci) narzêdziem. U¿ywaj±c go mo¿na wykryæ
-u¿ytkowników, którzy nielegalnie udostepniaj± pol±czenie internetowe.
+u¿ytkowników, którzy nielegalnie udostêpniaj± po³±czenie internetowe.
 
 %prep
 %setup -q -n %{name}
