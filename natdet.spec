@@ -1,5 +1,5 @@
-Summary:	NATDet is easy to use NAT detecion program
-Summary(pl):	NATDet jest ³atwym w obs³udze programem do wykrywania NAT-u w sieci
+Summary:	NATDet - easy to use NAT detecion program
+Summary(pl):	NATDet - ³atwy w obs³udze program do wykrywania NAT-u w sieci
 Name:		natdet
 Version:	1.0.0
 Release:	1
@@ -20,10 +20,8 @@ share internet connection illegaly, without your authorization.
 
 %description -l pl
 NATDet jest ca³kiem ma³ym ale bardzo u¿ytecznym (zw³aszcza dla
-administratorów sieci) narzêdziem. U¿ywaj±c go, jeste¶ w stanie
-wykryæ u¿ytkowników, którzy nielegalnie udostepniaj± pol±czenie
-internetowe.
-
+administratorów sieci) narzêdziem. U¿ywaj±c go mo¿na wykryæ
+u¿ytkowników, którzy nielegalnie udostepniaj± pol±czenie internetowe.
 
 %prep
 %setup -q -n %{name}
@@ -31,15 +29,16 @@ internetowe.
 
 %build
 %{__make} \
-    PREFIX=$RPM_BUILD_ROOT%{_prefix}
+	PREFIX=$RPM_BUILD_ROOT%{_prefix}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_sysconfdir}}
+
 install natdet $RPM_BUILD_ROOT%{_bindir}
 install natdet.fp $RPM_BUILD_ROOT%{_sysconfdir}
-gzip doc/natdet.1
-install doc/natdet.1* $RPM_BUILD_ROOT%{_mandir}/man1
+install doc/natdet.1 $RPM_BUILD_ROOT%{_mandir}/man1
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
