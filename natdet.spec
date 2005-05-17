@@ -1,15 +1,14 @@
 Summary:	NATDet - easy to use NAT detecion program
 Summary(pl):	NATDet - ³atwy w obs³udze program do wykrywania NAT-u w sieci
 Name:		natdet
-Version:	1.0.0
+Version:	1.0.5
 Release:	1
 Epoch:		0
-License:	GPL
+License:	GPL v2
 Group:		Applications/Networking
-Source0:	http://r3b00t.itsec.pl/natdet/%{name}-%{version}.tgz
-# Source0-md5:	a472486fea0182e192b22717b0da4b4c
-Patch0:		%{name}-bpfh.patch
-URL:		http://r3b00t.itsec.pl/
+Source0:	http://elceef.itsec.pl/natdet/%{name}-%{version}.tgz
+# Source0-md5:	e1a9eb839b429b70f661fe87f1b13ed8
+URL:		http://elceef.itsec.pl/natdet/
 BuildRequires:	libpcap-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -25,26 +24,28 @@ u¿ytkowników, którzy nielegalnie udostêpniaj± po³±czenie internetowe.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1
 
 %build
-%{__make} \
+%configure
+%{__make} all natstat \
 	PREFIX=$RPM_BUILD_ROOT%{_prefix}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_sysconfdir}}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_sysconfdir},%{_datadir}/%{name}}
 
 install natdet $RPM_BUILD_ROOT%{_bindir}
-install natdet.fp $RPM_BUILD_ROOT%{_sysconfdir}
+install natstat/natstat $RPM_BUILD_ROOT%{_bindir}
+install signatures $RPM_BUILD_ROOT%{_datadir}/%{name}
 install doc/natdet.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install natstat/README doc/README-natstat
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/CREDITS doc/README* doc/PLATFORMS
+%doc doc/CREDITS doc/README* doc/Platforms doc/CHANGES doc/FAQ doc/debug-mode
 %attr(755,root,root) %{_bindir}/*
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/natdet.fp
+%{_datadir}/%{name}/*
 %{_mandir}/man1/natdet.1*
