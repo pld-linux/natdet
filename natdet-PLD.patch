@@ -1,0 +1,45 @@
+diff -urN natdet.orig/config.h natdet/config.h
+--- natdet.orig/config.h	2005-05-14 14:26:26.000000000 +0200
++++ natdet/config.h	2006-03-08 00:18:34.201250000 +0100
+@@ -15,7 +15,7 @@
+    should be: 1 <= HOP_DIST <= 4 */
+ 
+ #ifdef UNIX
+-#define FP_DIR           "/usr/local/share/natdet"
++#define FP_DIR           "/usr/share/natdet"
+ #else
+ #define FP_DIR           "."
+ #endif
+diff -urN natdet.orig/configure natdet/configure
+--- natdet.orig/configure	2005-05-14 14:26:41.000000000 +0200
++++ natdet/configure	2006-03-08 00:16:30.309507250 +0100
+@@ -22,7 +22,7 @@
+ NATSTAT = natstat/natstat
+ BINPERM = 754
+ 
+-PREFIX  = /usr/local
++PREFIX  = /usr
+ BINDIR  = \$(PREFIX)/sbin
+ DOCDIR  = \$(PREFIX)/doc/\$(PROGRAM)
+ MANDIR  = \$(PREFIX)/man/man1
+@@ -30,7 +30,7 @@
+ 
+ OBJECTS = natdet.c
+ CFLAGS  = -O2 -Wall -funroll-loops -fomit-frame-pointer -DUNIX
+-LIBS    = -I/usr/local/include -lpcap
++LIBS    = -I/usr/include -lpcap
+ STRIP   = strip
+ CC      = cc
+ 
+diff -urN natdet.orig/natstat/Makefile natdet/natstat/Makefile
+--- natdet.orig/natstat/Makefile	2005-05-03 17:18:40.000000000 +0200
++++ natdet/natstat/Makefile	2006-03-08 00:18:04.331383250 +0100
+@@ -3,7 +3,7 @@
+ # This file is part of the NATDet - NAT Detection tool
+ PROGRAM = natstat
+ OBJECTS = natstat.c
+-PREFIX  = /usr/local
++PREFIX  = /usr
+ BINDIR  = $(PREFIX)/sbin
+ CFLAGS  = -O2 -Wall -funroll-loops -fomit-frame-pointer
+ CC      = cc
