@@ -8,6 +8,7 @@ License:	GPL v2
 Group:		Applications/Networking
 Source0:	http://elceef.itsec.pl/natdet/%{name}-%{version}.tgz
 # Source0-md5:	e1a9eb839b429b70f661fe87f1b13ed8
+Patch0:		%{name}-PLD.patch
 URL:		http://elceef.itsec.pl/natdet/
 BuildRequires:	libpcap-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -24,6 +25,7 @@ u¿ytkowników, którzy nielegalnie udostêpniaj± po³±czenie internetowe.
 
 %prep
 %setup -q -n %{name}
+%patch0 -p1
 
 %build
 %configure
