@@ -19,7 +19,7 @@ administrators) tool. By using it, you're able to detect guys who
 share internet connection illegaly, without your authorization.
 
 %description -l pl
-NATDet jest ca³kiem ma³ym ale bardzo u¿ytecznym (zw³aszcza dla
+NATDet jest ca³kiem ma³ym, ale bardzo u¿ytecznym (zw³aszcza dla
 administratorów sieci) narzêdziem. U¿ywaj±c go mo¿na wykryæ
 u¿ytkowników, którzy nielegalnie udostêpniaj± po³±czenie internetowe.
 
@@ -30,6 +30,8 @@ u¿ytkowników, którzy nielegalnie udostêpniaj± po³±czenie internetowe.
 %build
 %configure
 %{__make} all natstat \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags}" \
 	PREFIX=$RPM_BUILD_ROOT%{_prefix}
 
 %install
