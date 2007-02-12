@@ -1,5 +1,5 @@
 Summary:	NATDet - easy to use NAT detecion program
-Summary(pl):	NATDet - ³atwy w obs³udze program do wykrywania NAT-u w sieci
+Summary(pl.UTF-8):   NATDet - Å‚atwy w obsÅ‚udze program do wykrywania NAT-u w sieci
 Name:		natdet
 Version:	1.0.5
 Release:	1
@@ -18,10 +18,10 @@ NATDet is quite small but very useful (especially for network
 administrators) tool. By using it, you're able to detect guys who
 share internet connection illegaly, without your authorization.
 
-%description -l pl
-NATDet jest ca³kiem ma³ym, ale bardzo u¿ytecznym (zw³aszcza dla
-administratorów sieci) narzêdziem. U¿ywaj±c go mo¿na wykryæ
-u¿ytkowników, którzy nielegalnie udostêpniaj± po³±czenie internetowe.
+%description -l pl.UTF-8
+NATDet jest caÅ‚kiem maÅ‚ym, ale bardzo uÅ¼ytecznym (zwÅ‚aszcza dla
+administratorÃ³w sieci) narzÄ™dziem. UÅ¼ywajÄ…c go moÅ¼na wykryÄ‡
+uÅ¼ytkownikÃ³w, ktÃ³rzy nielegalnie udostÄ™pniajÄ… poÅ‚Ä…czenie internetowe.
 
 %prep
 %setup -q -n %{name}
