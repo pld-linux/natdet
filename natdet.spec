@@ -1,5 +1,5 @@
 Summary:	NATDet - easy to use NAT detecion program
-Summary(pl.UTF-8):   NATDet - łatwy w obsłudze program do wykrywania NAT-u w sieci
+Summary(pl.UTF-8):	NATDet - łatwy w obsłudze program do wykrywania NAT-u w sieci
 Name:		natdet
 Version:	1.0.5
 Release:	1
