@@ -1,13 +1,12 @@
 Summary:	NATDet - easy to use NAT detecion program
 Summary(pl.UTF-8):	NATDet - łatwy w obsłudze program do wykrywania NAT-u w sieci
 Name:		natdet
-Version:	1.0.5
+Version:	1.0.6
 Release:	1
-Epoch:		0
 License:	GPL v2
 Group:		Applications/Networking
 Source0:	http://elceef.itsec.pl/natdet/%{name}-%{version}.tgz
-# Source0-md5:	e1a9eb839b429b70f661fe87f1b13ed8
+# Source0-md5:	3300273c0cb9f582bbe8464ca764e91d
 Patch0:		%{name}-PLD.patch
 URL:		http://elceef.itsec.pl/natdet/
 BuildRequires:	libpcap-devel
@@ -39,10 +38,10 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_sysconfdir},%{_datadir}/%{name}}
 
 install natdet $RPM_BUILD_ROOT%{_bindir}
-install natstat/natstat $RPM_BUILD_ROOT%{_bindir}
+install tools/natstat $RPM_BUILD_ROOT%{_bindir}
 install signatures $RPM_BUILD_ROOT%{_datadir}/%{name}
 install doc/natdet.1 $RPM_BUILD_ROOT%{_mandir}/man1
-install natstat/README doc/README-natstat
+install tools/README doc/README-natstat
 
 %clean
 rm -rf $RPM_BUILD_ROOT
