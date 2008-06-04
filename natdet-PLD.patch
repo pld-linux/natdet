@@ -1,20 +1,21 @@
-diff -urN natdet.orig/config.h natdet/config.h
---- natdet.orig/config.h	2005-05-14 14:26:26.000000000 +0200
-+++ natdet/config.h	2006-03-08 00:18:34.201250000 +0100
+--- natdet/config.h.orig	2007-02-18 10:09:50.000000000 +0100
++++ natdet/config.h	2008-06-04 03:54:59.000000000 +0200
 @@ -15,7 +15,7 @@
     should be: 1 <= HOP_DIST <= 4 */
  
- #ifdef UNIX
+ #ifndef WIN32
 -#define FP_DIR           "/usr/local/share/natdet"
 +#define FP_DIR           "/usr/share/natdet"
  #else
  #define FP_DIR           "."
  #endif
-diff -urN natdet.orig/configure natdet/configure
---- natdet.orig/configure	2005-05-14 14:26:41.000000000 +0200
-+++ natdet/configure	2006-03-08 00:16:30.309507250 +0100
-@@ -22,7 +22,7 @@
- NATSTAT = natstat/natstat
+--- natdet/configure.orig	2007-02-17 23:09:04.000000000 +0100
++++ natdet/configure	2008-06-04 04:19:13.000000000 +0200
+@@ -18,9 +18,10 @@
+ VERSION = 1.0.6-devel
+ 
+ PROGRAM = natdet
++NATSTAT = tools/natstat
  BINPERM = 754
  
 -PREFIX  = /usr/local
@@ -22,18 +23,36 @@ diff -urN natdet.orig/configure natdet/configure
  BINDIR  = \$(PREFIX)/sbin
  DOCDIR  = \$(PREFIX)/doc/\$(PROGRAM)
  MANDIR  = \$(PREFIX)/man/man1
-@@ -30,7 +30,7 @@
+@@ -28,7 +29,7 @@
  
  OBJECTS = natdet.c
- CFLAGS  = -O2 -Wall -funroll-loops -fomit-frame-pointer -DUNIX
+ CFLAGS  = -O2 -Wall -funroll-loops -fomit-frame-pointer
 -LIBS    = -I/usr/local/include -lpcap
 +LIBS    = -I/usr/include -lpcap
  STRIP   = strip
  CC      = cc
  
-diff -urN natdet.orig/natstat/Makefile natdet/natstat/Makefile
---- natdet.orig/natstat/Makefile	2005-05-03 17:18:40.000000000 +0200
-+++ natdet/natstat/Makefile	2006-03-08 00:18:04.331383250 +0100
+@@ -42,6 +43,9 @@
+ 	\$(STRIP) \$(PROGRAM) 2>/dev/null
+ 	@echo Done.
+ 
++natstat: \$(NATSTAT)
++	@echo Done.
++
+ debug:
+ 	\$(CC) \$(CFLAGS) -D_DEBUG -o \$(PROGRAM) \$(OBJECTS) \$(LIBS)
+ 	\$(STRIP) \$(PROGRAM) 2>/dev/null
+@@ -113,7 +117,7 @@
+ 
+ show "Checking for pcap library "
+ 
+-pcap=`ls /lib/ /usr/lib/ /usr/local/lib/ |grep pcap |wc -l`
++pcap=`ls /lib/ /usr/lib/ /usr/lib64/ |grep pcap |wc -l`
+ if [ $pcap -gt 0 ]; then
+   echo " Ok"
+ else
+--- natdet.orig/tools/Makefile	2005-05-03 17:18:40.000000000 +0200
++++ natdet/tools/Makefile	2006-03-08 00:18:04.331383250 +0100
 @@ -3,7 +3,7 @@
  # This file is part of the NATDet - NAT Detection tool
  PROGRAM = natstat
